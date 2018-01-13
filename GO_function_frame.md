@@ -5,11 +5,8 @@
 
 流程
 
-```
-{% mermaid %}
-```
 
-```
+{% mermaid %}
 graph TD;
   A--
 >
@@ -24,7 +21,6 @@ D;
 >
 D;
 {% endmermaid %}
-```
 
 注意:
 
