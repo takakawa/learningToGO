@@ -5,31 +5,19 @@
 
 流程
 
-```
-{% mermaid %}
-```
-
-```
-graph TD;
-  A--
->
-B;
-  A--
->
-C;
-  B--
->
-D;
-  C--
->
-D;
-{% endmermaid %}
-```
 
 注意:
 
 * GO多值返回使用栈来传输
 * GO的栈在一开始就分配好大写，对局部变量和入参，返回函数的使用都通过和SP的偏移来计算
 
+
+{% mermaid %}
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+{% endmermaid %}
 
 
