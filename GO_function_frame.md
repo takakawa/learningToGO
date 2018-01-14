@@ -6,7 +6,7 @@ go语言通过以下命令可以将go源文件xx.go转成xx.S，以查看go语�
 
 生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
 
-源函数：
+# 源函数：
 
 ```go
 func closeure(a int) (func(x int) int){
@@ -19,7 +19,7 @@ func closeure(a int) (func(x int) int){
 }
 ```
 
-plan9汇编：
+# plan9汇编：
 
 ```asm
 "".closeure STEXT size=91 args=0x10 locals=0x18
@@ -69,7 +69,15 @@ plan9汇编：
 
 上述代码最后部分数字区域为对应的机器码
 
-目标机器汇编（MacPro)：
+注意:
+
+* GO多值返回使用栈来传输
+* GO的栈在一开始就分配好大写，对局部变量和入参，返回函数的使用都通过和SP的偏移来计算
+
+
+
+
+# 目标机器汇编（MacPro)：
 
 ```asm
 Dump of assembler code for function main.closeure:
@@ -95,10 +103,7 @@ Dump of assembler code for function main.closeure:
    0x0000000001093779 <+89>:	eb a5	jmp    0x1093720 <main.closeure>
 End of assembler dump.
 ```
-注意:
 
-* GO多值返回使用栈来传输
-* GO的栈在一开始就分配好大写，对局部变量和入参，返回函数的使用都通过和SP的偏移来计算
 
 
 {% mermaid %}
