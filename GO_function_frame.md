@@ -1,6 +1,9 @@
 # GO汇编说明
 
-go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
+go语言通过以下命令可以将go源文件xx.go转成xx.S，以查看go语言的汇编
+> go tool compile -S xx.go >> xx.S
+
+生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
 
 源函数：
 
