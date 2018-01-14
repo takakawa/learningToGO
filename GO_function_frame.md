@@ -2,17 +2,7 @@
   
   go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法
   
-  例：原始函数
-  
-   func closeure(a int) (func(x int) int){
-         internal:=func(b int) int {
-           return a+b
-        }
-       return internal
-    }
-
-
-
+  例：原始函函数 
 * GO函数栈分析
   先看一个函数的栈
   ![](/assets/屏幕快照 2018-01-13 下午12.28.50.png)
