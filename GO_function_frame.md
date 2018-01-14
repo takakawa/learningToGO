@@ -4,14 +4,14 @@
   
   例：原始函数
   
-  ```
- func closeure(a int) (func(x int) int){
-       internal:=func(b int) int {
-         return a+b
-      }
-     return internal
-  }
-  ```
+
+   func closeure(a int) (func(x int) int){
+         internal:=func(b int) int {
+           return a+b
+        }
+       return internal
+    }
+
 
 
 * GO函数栈分析
