@@ -113,3 +113,5 @@ func closeurerw(a int) (func(x int) int){
 	rel 253+4 t=8 runtime.morestack_noctxt+0
 
 ```
+
+由上知local和local1都不是栈的变量，都是先动态分配，把地址存储在栈上
