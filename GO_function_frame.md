@@ -64,7 +64,7 @@ plan9汇编：
 
 目标机器汇编（MacPro)：
 
-```
+```asm
 Dump of assembler code for function main.closeure:
    0x0000000001093720 <+0>:	65 48 8b 0c 25 a0 08 00 00	mov    %gs:0x8a0,%rcx
    0x0000000001093729 <+9>:	48 3b 61 10	cmp    0x10(%rcx),%rsp
