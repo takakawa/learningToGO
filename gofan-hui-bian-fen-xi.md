@@ -13,7 +13,7 @@ func closeurerw(a int) (func(x int) int){
 }
 ```
 
-其汇编
+# 汇编分析
 ```
 "".closeurerw STEXT size=262 args=0x10 locals=0x38
 	0x0000 00000 (main.go:23)	TEXT	"".closeurerw(SB), $56-16
@@ -25,13 +25,13 @@ func closeurerw(a int) (func(x int) int){
 	0x001c 00028 (main.go:23)	LEAQ	48(SP), BP
 	0x0021 00033 (main.go:23)	FUNCDATA	$0, gclocals·d43560e00d694c31b947b5a80212ab3d(SB)
 	0x0021 00033 (main.go:23)	FUNCDATA	$1, gclocals·7d68339d7f8fcdb4db483363451a3412(SB)
-	0x0021 00033 (main.go:23)	LEAQ	type.int(SB), AX
-	0x0028 00040 (main.go:24)	MOVQ	AX, (SP)
+	0x0021 00033 (main.go:23)	LEAQ	type.int(SB), AX          # 此此为声明local做准备
+	0x0028 00040 (main.go:24)	MOVQ	AX, (SP)                  # 这是对runtime.newobject函数的参数入栈
 	0x002c 00044 (main.go:24)	PCDATA	$0, $0
-	0x002c 00044 (main.go:24)	CALL	runtime.newobject(SB)
-	0x0031 00049 (main.go:24)	MOVQ	8(SP), AX
+	0x002c 00044 (main.go:24)	CALL	runtime.newobject(SB)    # 使用newobject创建一个int型变量
+	0x0031 00049 (main.go:24)	MOVQ	8(SP), AX                # 8(SP)为newobject的返回值
 	0x0036 00054 (main.go:24)	MOVQ	AX, "".&local+40(SP)
-	0x003b 00059 (main.go:24)	MOVQ	$1, (AX)
+	0x003b 00059 (main.go:24)	MOVQ	$1, (AX)                  #对int变量赋初值1
 	0x0042 00066 (main.go:24)	LEAQ	type.int(SB), CX
 	0x0049 00073 (main.go:25)	MOVQ	CX, (SP)
 	0x004d 00077 (main.go:25)	PCDATA	$0, $1
