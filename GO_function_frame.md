@@ -1,4 +1,4 @@
-* GO汇编和最终汇编对比
+# GO汇编和最终汇编对比
   
 go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法
 
