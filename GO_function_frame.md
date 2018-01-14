@@ -8,6 +8,7 @@ func closeure(a int) (func(x int) int){
     internal:=func(b int) int {
       return a+b
     }
+    
     return internal
 }
 ```
