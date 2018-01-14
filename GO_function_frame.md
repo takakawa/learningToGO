@@ -5,10 +5,10 @@ go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法
 源函数：
 ```go
 func closeure(a int) (func(x int) int){
-internal:=func(b int) int {
-return a+b
-}
-return internal
+    internal:=func(b int) int {
+    return a+b
+    }
+    return internal
 }
 ```
 
