@@ -58,6 +58,33 @@ plan9汇编：
 	rel 85+4 t=8 runtime.morestack_noctxt+0
 ```
 
+最终对应的执行汇编：
+
+```
+Dump of assembler code for function main.closeure:
+   0x0000000001093720 <+0>:	65 48 8b 0c 25 a0 08 00 00	mov    %gs:0x8a0,%rcx
+   0x0000000001093729 <+9>:	48 3b 61 10	cmp    0x10(%rcx),%rsp
+   0x000000000109372d <+13>:	76 45	jbe    0x1093774 <main.closeure+84>
+   0x000000000109372f <+15>:	48 83 ec 18	sub    $0x18,%rsp
+   0x0000000001093733 <+19>:	48 89 6c 24 10	mov    %rbp,0x10(%rsp)
+   0x0000000001093738 <+24>:	48 8d 6c 24 10	lea    0x10(%rsp),%rbp
+   0x000000000109373d <+29>:	48 8d 05 5c a4 01 00	lea    0x1a45c(%rip),%rax        # 0x10adba0 <type.*+106912>
+=> 0x0000000001093744 <+36>:	48 89 04 24	mov    %rax,(%rsp)
+   0x0000000001093748 <+40>:	e8 b3 b7 f7 ff	callq  0x100ef00 <runtime.newobject>
+   0x000000000109374d <+45>:	48 8b 44 24 08	mov    0x8(%rsp),%rax
+   0x0000000001093752 <+50>:	48 8d 0d 27 02 00 00	lea    0x227(%rip),%rcx        # 0x1093980 <main.closeure.func1>
+   0x0000000001093759 <+57>:	48 89 08	mov    %rcx,(%rax)
+   0x000000000109375c <+60>:	48 8b 4c 24 20	mov    0x20(%rsp),%rcx
+   0x0000000001093761 <+65>:	48 89 48 08	mov    %rcx,0x8(%rax)
+   0x0000000001093765 <+69>:	48 89 44 24 28	mov    %rax,0x28(%rsp)
+   0x000000000109376a <+74>:	48 8b 6c 24 10	mov    0x10(%rsp),%rbp
+   0x000000000109376f <+79>:	48 83 c4 18	add    $0x18,%rsp
+   0x0000000001093773 <+83>:	c3	retq
+   0x0000000001093774 <+84>:	e8 87 ab fb ff	callq  0x104e300 <runtime.morestack_noctxt>
+   0x0000000001093779 <+89>:	eb a5	jmp    0x1093720 <main.closeure>
+End of assembler dump.
+```
+
 
 * GO函数栈分析
   先看一个函数的栈
