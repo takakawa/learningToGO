@@ -13,7 +13,7 @@ go语言通过以下命令可以将go源文件xx.go转成xx.S，以查看go语�
 
 {% mermaid %}
 graph TD;
-  BP1<--[BP2];
+  BP1-->[BP2];
   BP2-->[BP3];
 {% endmermaid %}
 
