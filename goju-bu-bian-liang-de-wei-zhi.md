@@ -25,14 +25,14 @@ func closeurerw(a int) (func(x int) int){
 	0x001c 00028 (main.go:23)	LEAQ	48(SP), BP
 	0x0021 00033 (main.go:23)	FUNCDATA	$0, gclocals·d43560e00d694c31b947b5a80212ab3d(SB)
 	0x0021 00033 (main.go:23)	FUNCDATA	$1, gclocals·7d68339d7f8fcdb4db483363451a3412(SB)
-	0x0021 00033 (main.go:23)	LEAQ	type.int(SB), AX
-	0x0028 00040 (main.go:24)	MOVQ	AX, (SP)
+	0x0021 00033 (main.go:23)	LEAQ	type.int(SB), AX        # 构造runtime.newobject参数，其参数为一个_type类型的指针
+	0x0028 00040 (main.go:24)	MOVQ	AX, (SP)                # 将构造参数入栈
 	0x002c 00044 (main.go:24)	PCDATA	$0, $0
-	0x002c 00044 (main.go:24)	CALL	runtime.newobject(SB)
-	0x0031 00049 (main.go:24)	MOVQ	8(SP), AX
-	0x0036 00054 (main.go:24)	MOVQ	AX, "".&local+40(SP)
-	0x003b 00059 (main.go:24)	MOVQ	$1, (AX)
-	0x0042 00066 (main.go:24)	LEAQ	type.int(SB), CX
+	0x002c 00044 (main.go:24)	CALL	runtime.newobject(SB)   # 调用 newobject分配内存
+	0x0031 00049 (main.go:24)	MOVQ	8(SP), AX               # 将出参入栈，函数只有一个参数，故SP+8指向出参 
+	0x0036 00054 (main.go:24)	MOVQ	AX, "".&local+40(SP)    # 将分配的int的地址放到栈上(SP+40=BP-8)
+	0x003b 00059 (main.go:24)	MOVQ	$1, (AX)                # 对申请的内存赋初值1
+	0x0042 00066 (main.go:24)	LEAQ	type.int(SB), CX        # 申请local2，过程同上
 	0x0049 00073 (main.go:25)	MOVQ	CX, (SP)
 	0x004d 00077 (main.go:25)	PCDATA	$0, $1
 	0x004d 00077 (main.go:25)	CALL	runtime.newobject(SB)
