@@ -1,5 +1,6 @@
 # 局部变量不一定在栈上
-```
+分析代码
+```go
 func closeurerw(a int) (func(x int) int){
     local:=1
     local2:=1
@@ -11,3 +12,5 @@ func closeurerw(a int) (func(x int) int){
     return internal
 }
 ```
+
+#
