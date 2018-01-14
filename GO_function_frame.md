@@ -21,7 +21,7 @@ func closeure(a int) (func(x int) int){
 
 plan9汇编：
 
-```
+```asm
 "".closeure STEXT size=91 args=0x10 locals=0x18
 	0x0000 00000 (main.go:23)	TEXT	"".closeure(SB), $24-16
 	0x0000 00000 (main.go:23)	MOVQ	(TLS), CX
