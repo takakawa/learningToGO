@@ -1,6 +1,6 @@
 # GO汇编和最终汇编对比
 
-go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法
+go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
 
 源函数：
 
@@ -58,7 +58,7 @@ plan9汇编：
 	rel 85+4 t=8 runtime.morestack_noctxt+0
 ```
 
-最终对应的执行汇编：
+目标机器汇编（MacPro)：
 
 ```
 Dump of assembler code for function main.closeure:
