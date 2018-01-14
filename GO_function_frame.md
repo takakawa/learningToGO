@@ -2,7 +2,7 @@
 
 go语言通过以下命令可以将go源文件xx.go转成xx.S，以查看go语言的汇编
 
-> go tool compile -S xx.go >> xx.S
+```go tool compile -S xx.go >> xx.S```
 
 生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
 
@@ -61,6 +61,11 @@ plan9汇编：
 	rel 53+4 t=15 "".closeure.func1+0
 	rel 85+4 t=8 runtime.morestack_noctxt+0
 ```
+
+此汇编与大数我们常见的汇编语法基本相同，但是有很多奇怪的表示
+
+>  TEXT    "".closeure(SB), $24-16
+
 
 目标机器汇编（MacPro)：
 
