@@ -84,16 +84,6 @@ Dump of assembler code for function main.closeure:
    0x0000000001093779 <+89>:	eb a5	jmp    0x1093720 <main.closeure>
 End of assembler dump.
 ```
-
-
-* GO函数栈分析
-  先看一个函数的栈
-  ![](/assets/屏幕快照 2018-01-13 下午12.28.50.png)
-  go的函数栈和C语言的基本相似，但是有些变化
-
-流程
-
-
 注意:
 
 * GO多值返回使用栈来传输
