@@ -1,4 +1,4 @@
-# GO汇编和最终汇编对比
+# GO汇编说明
 
 go语言通过go tool compile -S xx.go >> xx.S生成的为plan9的汇编语法,plan9汇编最终会翻译为对应目标机器汇编
 
