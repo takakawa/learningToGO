@@ -39,7 +39,7 @@ func closeurerw(a int) (func(x int) int){
 	0x0052 00082 (main.go:25)	MOVQ	8(SP), AX
 	0x0057 00087 (main.go:25)	MOVQ	AX, "".&local2+32(SP)
 	0x005c 00092 (main.go:25)	MOVQ	$1, (AX)
-	0x0063 00099 (main.go:25)	LEAQ	type.struct { F uintptr; "".local *int; "".local2 *int; "".a int }(SB), CX
+	0x0063 00099 (main.go:25)	LEAQ	type.struct { F uintptr; "".local *int; "".local2 *int; "".a int }(SB), CX # 构造闭包函数的上下文，这里自动定义了一个结构体
 	0x006a 00106 (main.go:26)	MOVQ	CX, (SP)
 	0x006e 00110 (main.go:26)	PCDATA	$0, $2
 	0x006e 00110 (main.go:26)	CALL	runtime.newobject(SB)
@@ -47,20 +47,21 @@ func closeurerw(a int) (func(x int) int){
 	0x0078 00120 (main.go:26)	LEAQ	"".closeurerw.func1(SB), CX
 	0x007f 00127 (main.go:26)	MOVQ	CX, (AX)
 	0x0082 00130 (main.go:26)	TESTB	AL, (AX)
-	0x0084 00132 (main.go:26)	MOVL	runtime.writeBarrier(SB), CX
+	0x0084 00132 (main.go:26)	MOVL	runtime.writeBarrier(SB), CX    # 内存屏障
 	0x008a 00138 (main.go:26)	LEAQ	8(AX), DX
 	0x008e 00142 (main.go:26)	LEAQ	16(AX), BX
 	0x0092 00146 (main.go:26)	TESTL	CX, CX
 	0x0094 00148 (main.go:26)	JNE	192
-	0x0096 00150 (main.go:26)	MOVQ	"".&local+40(SP), CX
-	0x009b 00155 (main.go:26)	MOVQ	CX, 8(AX)
-	0x009f 00159 (main.go:26)	MOVQ	"".&local2+32(SP), CX
-	0x00a4 00164 (main.go:26)	MOVQ	CX, 16(AX)
-	0x00a8 00168 (main.go:26)	MOVQ	"".a+64(SP), CX
-	0x00ad 00173 (main.go:26)	MOVQ	CX, 24(AX)
-	0x00b1 00177 (main.go:31)	MOVQ	AX, "".~r1+72(SP)
-	0x00b6 00182 (main.go:31)	MOVQ	48(SP), BP
-	0x00bb 00187 (main.go:31)	ADDQ	$56, SP
+	0x0096 00150 (main.go:26)	MOVQ	"".&local+40(SP), CX         # 获取local地址
+	0x009b 00155 (main.go:26)	MOVQ	CX, 8(AX)                    # 将local的地址放入struct中的local位置
+	0x009f 00159 (main.go:26)	MOVQ	"".&local2+32(SP), CX        # 获取local2地址
+	0x00a4 00164 (main.go:26)	MOVQ	CX, 16(AX)                   # 将local2的地址放入struct中的local2位置
+	0x00a8 00168 (main.go:26)	MOVQ	"".a+64(SP), CX              # 获取入参a的内容
+	0x00ad 00173 (main.go:26)	MOVQ	CX, 24(AX)                   # 放入struct中a的位置
+	0x00b1 00177 (main.go:31)	MOVQ	AX, "".~r1+72(SP)            # 将struct的地址放到返回参数位置
+	0x00b6 00182 (main.go:31)	MOVQ	48(SP), BP                   # 恢复BP
+	
+	0x00bb 00187 (main.go:31)	ADDQ	$56, SP			# 回退栈
 	0x00bf 00191 (main.go:31)	RET
 	0x00c0 00192 (main.go:31)	MOVQ	AX, ""..autotmp_9+16(SP)
 	0x00c5 00197 (main.go:31)	MOVQ	BX, ""..autotmp_10+24(SP)
